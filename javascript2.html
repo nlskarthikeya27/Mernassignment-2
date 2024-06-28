@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TASK 2</title>
+  <style>
+    body {
+      font-family: sans-serif;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    #textInput,
+    #sortButton {
+      padding: 10px;
+      margin: 10px;
+    }
+
+    #result {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Sort String Alphabetically</h1>
+  <input type="text" id="textInput" placeholder="Enter a string">
+  <button id="sortButton">Sort</button>
+  <p id="result"></p>
+  <script>
+    function sortString(str) {
+      return str.split('').sort().join('');
+    }
+
+    const textInput = document.getElementById('textInput');
+    const sortButton = document.getElementById('sortButton');
+    const result = document.getElementById('result');
+
+    sortButton.addEventListener('click', () => {
+      const inputString = textInput.value.toLowerCase(); // Convert to lowercase
+      if (inputString) {
+        const sortedString = sortString(inputString);
+        result.textContent = `Sorted String: ${sortedString}`;
+      } else {
+        result.textContent = 'Please enter a string.';
+      }
+    });
+  </script>
+</body>
+</html>

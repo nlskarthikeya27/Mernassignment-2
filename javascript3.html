@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TASK 3</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #f5f5f5;
+    }
+
+    .calculator {
+      padding: 20px;
+      border: 1px solid #0d0c0c;
+      border-radius: 5px;
+      background-color: #f3ebeb;
+      text-align: center;
+    }
+
+    input[type="number"] {
+      padding: 5px;
+      margin: 5px;
+      width: 100px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 5px;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    #multiply {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    #divide {
+      background-color: #3498DB;
+      color: white;
+    }
+
+    #result {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <h2>Calculator</h2>
+    <label for="num1">Number 1:</label>
+    <input type="number" id="num1" placeholder="Enter number 1">
+    <br>
+    <label for="num2">Number 2:</label>
+    <input type="number" id="num2" placeholder="Enter number 2">
+    <br>
+    <button id="multiply">Multiply</button>
+    <button id="divide">Divide</button>
+    <br>
+    <p id="result"></p>
+  </div>
+  <script>
+    const num1Input = document.getElementById('num1');
+    const num2Input = document.getElementById('num2');
+    const multiplyButton = document.getElementById('multiply');
+    const divideButton = document.getElementById('divide');
+    const result = document.getElementById('result');
+
+    multiplyButton.addEventListener('click', () => {
+      const num1 = parseFloat(num1Input.value);
+      const num2 = parseFloat(num2Input.value);
+      if (!isNaN(num1) && !isNaN(num2)) {
+        const product = num1 * num2;
+        result.textContent = `RESULT: ${product}`;
+      } else {
+        result.textContent = 'Please enter valid numbers.';
+      }
+    });
+
+    divideButton.addEventListener('click', () => {
+      const num1 = parseFloat(num1Input.value);
+      const num2 = parseFloat(num2Input.value);
+      if (!isNaN(num1) && !isNaN(num2) && num2 !== 0) { // Check for division by zero
+        const quotient = num1 / num2;
+        result.textContent = `RESULT : ${quotient}`;
+      } else {
+        result.textContent = 'Please enter valid numbers (divisor cannot be zero).';
+      }
+    });
+  </script>
+</body>
+</html>

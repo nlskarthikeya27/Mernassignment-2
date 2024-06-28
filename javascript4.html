@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TASK 4</title>
+  <style>
+    .result-container {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Date and Time</h1>
+  <div class="result-container">
+    <button id="showDateButton">Show Date</button>
+    <p id="dateResult"></p>
+  </div>
+  <div class="result-container">
+    <button id="showTimeButton">Show Time</button>
+    <p id="timeResult"></p>
+  </div>
+  <script>
+    const showDateButton = document.getElementById('showDateButton');
+    const showTimeButton = document.getElementById('showTimeButton');
+    const dateResult = document.getElementById('dateResult');
+    const timeResult = document.getElementById('timeResult');
+
+    function formatDate(date) {
+      const options = {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      };
+      return new Intl.DateTimeFormat('en-IN', options).format(date);
+    }
+
+    function showDate() {
+      const date = new Date();
+      const formattedDate = formatDate(date);
+      dateResult.textContent = `Date : ${formattedDate}`;
+    }
+
+    function showTime() {
+      const date = new Date();
+      const hours = date.getHours().toString().padStart(2, '0');
+      const minutes = date.getMinutes().toString().padStart(2, '0');
+      timeResult.textContent = `Time (IST): ${hours}:${minutes} (24 hours format)`;
+    }
+
+    showDateButton.addEventListener('click', showDate);
+    showTimeButton.addEventListener('click', showTime);
+  </script>
+</body>
+</html>

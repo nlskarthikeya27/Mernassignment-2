@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TASK 1</title>
+  <style>
+    body {
+      font-family: sans-serif;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    #numberInput,
+    #reverseButton {
+      padding: 10px;
+      margin: 10px;
+    }
+
+    #result {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Number Reversal</h1>
+  <input type="number" id="numberInput" placeholder="Enter a number">
+  <button id="reverseButton">Reverse</button>
+  <p id="result"></p>
+  <script>
+    function reverseNumber(num) {
+      let reversedNum = 0;
+      while (num !== 0) {
+        const lastDigit = num % 10; // Extract the last digit
+        reversedNum = (reversedNum * 10) + lastDigit; // Append the digit to the front of reversedNum
+        num = Math.floor(num / 10); // Remove the last digit from the original number
+      }
+      return reversedNum;
+    }
+
+    const numberInput = document.getElementById('numberInput');
+    const reverseButton = document.getElementById('reverseButton');
+    const result = document.getElementById('result');
+
+    reverseButton.addEventListener('click', () => {
+      const inputNumber = numberInput.value;
+      if (inputNumber) {
+        const reversed = reverseNumber(parseInt(inputNumber));
+        result.textContent = `Reversed Number: ${reversed}`;
+      } else {
+        result.textContent = 'Please enter a number.';
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TASK 7</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column; 
+      justify-content: center; 
+      align-items: center; 
+      margin: 0; 
+      height: 100vh;
+    }
+    
+    #train {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      transition: none;
+    }
+  </style>
+</head>
+<body>
+  <img id="train" src="6TpogMd7c.gif" alt="Train Animation">
+  <p>Click on the following buttons to handle animation:</p>
+  <div style="display: flex; justify-content: center;"> <button id="start-button">Start</button>
+       <button id="stop-button">Stop</button>
+  </div>
+
+  <script>
+    const train = document.getElementById('train');
+    const startButton = document.getElementById('start-button');
+    const stopButton = document.getElementById('stop-button');
+    let animation;
+
+    startButton.addEventListener('click', () => {
+      train.style.left = '100vw'; 
+      animation = setInterval(() => {
+        
+        if (train.offsetLeft >= window.innerWidth) {
+          train.style.left = '0';
+        } else {
+          train.style.left = train.offsetLeft + 0.5 + 'px'; 
+        }
+      }, 10); 
+    });
+
+    stopButton.addEventListener('click', () => {
+      clearInterval(animation); 
+      train.style.transition = 'none'; 
+    });
+  </script>
+</body>
+</html>
